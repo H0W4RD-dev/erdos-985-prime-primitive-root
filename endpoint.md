@@ -1,6 +1,6 @@
 # A second proof from the character sums at $x=p$
 
-Will Howe, with computational assistance from OpenAI Codex · November 20, 2026
+Companion to the manuscript by Will Howe, Grant Huffman, Jensen Kohlmeyer, and Liam Kruer. Prepared with computational assistance from OpenAI Codex, November 20, 2026.
 
 For every odd prime $p$, some prime integer $q<p$ generates the units modulo $p$. For $p>2791$, the manuscript deduces this directly from McGown, Treviño and Trudgian's Theorem 1. Here we instead derive the weaker bound $q<p$ from their Lemma 1, using the same zeta RH and Dirichlet GRH inputs. The finite part of this argument is larger, and every case has an independently replayable certificate. [Manuscript, Theorem 1.1](Erdos_985_Prime_Primitive_Root.pdf) · [McGown, Treviño and Trudgian, §2](https://arxiv.org/pdf/1508.05182) · [Sutherland’s verification of Alpöge’s GRH theorem](https://math.mit.edu/~drew/grh/)
 
