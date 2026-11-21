@@ -1,0 +1,131 @@
+\documentclass[11pt,letterpaper]{amsart}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,lmodern}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{fancyvrb}
+\hypersetup{pdftitle={A prime primitive root below every odd prime},
+  pdfsubject={Erdős problem 985},pdfauthor={Will Howe},
+  pdfkeywords={prime primitive root, Dirichlet character, Erdős problem 985}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\gr}{\widehat g}
+\title[A prime primitive root below every odd prime]{A prime primitive root below every odd prime}
+\author[W. Howe]{Will Howe}
+\date{November 20, 2026}
+\subjclass[2020]{11A07, 11M06}
+\keywords{Prime primitive root, multiplicative order, Dirichlet character}
+\thanks{The author used OpenAI Codex to prepare the manuscript and verify the finite calculations.}
+\begin{document}
+\begin{abstract}
+Every odd prime \(p\) has a prime primitive root \(q<p\). We deduce the
+large-prime case from McGown, Trevi\~no, and Trudgian's bound and the
+Dirichlet generalized Riemann hypothesis proved by Alp\"oge with Claude.
+For the 405 odd primes at most \(2791\), we give an exhaustive calculation
+and verify the multiplicative orders by a second method.
+\end{abstract}
+\maketitle
+\section{Introduction}
+Erd\H{o}s asked in 1965 whether each prime \(p\) admits a prime primitive
+root strictly below \(p\) \cite[p.~233]{erdos}. The prime \(2\) is exceptional
+because there is no prime below it. For \(a\) coprime to \(p\), write \(\ord_p(a)\) for
+the least positive integer \(n\) such that \(a^n\equiv1\pmod p\).
+
+\begin{theorem}[Erd\H{o}s problem 985]\label{t:main}
+For every odd prime \(p\), there is a prime integer \(q\) such that
+\[
+                         q<p,\qquad \ord_p(q)=p-1 .
+\]
+\end{theorem}
+An integer of order \(p-1\) generates \((\mathbb Z/p\mathbb Z)^\times\).
+Let \(\gr(p)\) be the least prime integer with this property. Under GRH,
+McGown, Trevi\~no, and Trudgian \cite[Theorem~1]{mtt} proved
+\begin{equation}\label{eq:mtt}
+                         \gr(p)<\sqrt{p}-2\qquad(p>2791,\ p\text{ prime}).
+\end{equation}
+Their explicit formula uses the Riemann zeta function and the Dirichlet
+\(L\)-functions for characters modulo \(p\) \cite[\S2, Lemma~1]{mtt}.
+
+Alp\"oge's formal proof, developed with Claude \cite{alp}, establishes RH
+for zeta. For every positive modulus \(N\), complex Dirichlet character
+\(\chi\bmod N\), and \(s\in\mathbb C\), it also gives
+\[
+            0<\Re s<1,\quad L(s,\chi)=0
+            \quad\Longrightarrow\quad \Re s=\tfrac12 .
+\]
+These statements supply the hypotheses of \eqref{eq:mtt}. Sutherland reports
+that all \(175{,}187\) modules passed Lean's kernel, that two independent kernels
+accepted the full export, and that the exported theorems match the stated
+zeta and Dirichlet propositions \cite{mit}.
+
+\begin{proof}[Proof of Theorem~\ref{t:main}]
+For \(p>2791\), choose \(q=\gr(p)\). Equation~\eqref{eq:mtt} gives
+\(q<\sqrt p-2<p\), and the definition of \(\gr(p)\) gives \(\ord_p(q)=p-1\).
+For \(p\le2791\), apply Lemma~\ref{l:finite} below.
+\end{proof}
+
+The conditional reduction and finite check appeared in January 2026
+\cite{jan}. An earlier prize submission recorded the deduction after
+Alp\"oge's announcement \cite{prior}. The accompanying
+\href{https://github.com/H0W4RD-dev/erdos-985-prime-primitive-root/blob/main/endpoint.md}{calculation at \(x=p\)}
+also derives the conclusion directly from the character-sum estimates
+of \cite[Lemma~1]{mtt}. Its finite remainder has \(74{,}187\) candidates,
+including \(18{,}802\) prime moduli.
+
+\newpage
+\section{The finite endpoint}
+\begin{lemma}[Small prime moduli]\label{l:finite}
+For every odd prime \(p\le2791\) a prime \(q\le53\) satisfies \(q<p\) and
+\(\ord_p(q)=p-1\).
+\end{lemma}
+\begin{proof}
+Trial division identifies the primes. Starting at \(1\), the function
+\texttt{order} finds the first return to \(1\) under multiplication by \(q\)
+modulo \(p\). Fermat's theorem guarantees a return by exponent \(p-1\).
+\begin{Verbatim}[fontsize=\small,xleftmargin=1.7em]
+from math import isqrt
+
+def prime(n):
+    return n >= 2 and all(n % d for d in range(2, isqrt(n) + 1))
+
+def order(q, p):
+    a = 1
+    for k in range(1, p):
+        a = (a * q) % p
+        if a == 1:
+            return k
+
+bases = [q for q in range(2, 54) if prime(q)]
+roots = []
+for p in range(3, 2792, 2):
+    if prime(p):
+        q = next(q for q in bases if q < p and order(q, p) == p-1)
+        roots.append((p, q))
+assert (len(roots), max(q for p, q in roots)) == (405, 53)
+\end{Verbatim}
+The calculation produces all 405 witnesses. A second check uses
+\(q^{p-1}\equiv1\pmod p\) and \(q^{(p-1)/r}\not\equiv1\pmod p\) for every prime
+divisor \(r\) of \(p-1\). These suffice since every proper divisor of \(p-1\)
+divides \((p-1)/r\) for some such \(r\). For instance, at \(p=2791\) take \(q=53\).
+Here \(2790=2\cdot3^2\cdot5\cdot31\), and the four exclusion residues in that
+order are \(2790\), \(91\), \(2214\), and \(1000\). For more extensive tables
+of least prime primitive roots, see Oliveira e Silva \cite{tos}.
+\end{proof}
+
+\begin{thebibliography}{9}
+\bibitem{alp} L. Alp\"oge, \href{https://alpo.ge/remark.pdf}{announcement of the Lean proof of RH and Dirichlet GRH},
+20 November 2026. \href{https://github.com/Deicyde/riemann-hypothesis}{Source and theorem statements}.
+\bibitem{erdos} P. Erd\H{o}s, \emph{Some recent advances and current problems in number theory},
+Lectures on Modern Mathematics, vol.~III (1965), 196--244, \href{https://www.renyi.hu/~p_erdos/1965-17.pdf\#page=39}{p.~233}.
+\bibitem{prior} \texttt{lixiang90}, \href{https://github.com/TheJustinSunPrize/awards/pull/5615}{JSP-000818, pull request 5615},
+The Justin Sun Prize, 20 November 2026.
+\bibitem{mtt} K. McGown, E. Trevi\~no, and T. Trudgian,
+\href{https://doi.org/10.7169/facm/2016.55.2.5}{\emph{Resolving Grosswald's conjecture on GRH}},
+Funct. Approx. Comment. Math. \textbf{55} (2016), 215--225.
+\bibitem{tos} T. Oliveira e Silva, \href{https://sweet.ua.pt/tos/p_roots.html}{\emph{Least prime primitive root of prime numbers}},
+computational tables, University of Aveiro.
+\bibitem{jan} N. Somani's GPT-Erdos project, \href{https://github.com/neelsomani/gpt-erdos/blob/9fead6532ee692f2a14d872175c52ddd19656698/data/solutions/985/candidate_solution.md}{candidate solution for problem 985}, 20 January 2026.
+\bibitem{mit} A. V. Sutherland, \href{https://math.mit.edu/~drew/grh/}{\emph{Verification files for the Lean proof of the Riemann Hypothesis}},
+MIT, 20 November 2026, 22:05 UTC. \href{https://math.mit.edu/~drew/grh/con-leche-compare.log}{Independent statement comparison}.
+\end{thebibliography}
+\end{document}

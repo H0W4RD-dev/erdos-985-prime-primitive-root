@@ -1,0 +1,162 @@
+{
+  "status": "passed",
+  "argument": "McGown–Treviño–Trudgian Lemma 1 at x=p",
+  "c_p_p_strict_upper": "50077/56784",
+  "analytic_compilation_complete": false,
+  "smallest_unbounded_rank": 10,
+  "prime_product_first_ten": 6469693230,
+  "scalar_condition": "sqrt(p) > 2*(1+(2^omega(p-1)-1)*log(p))",
+  "rank_floors": [
+    {
+      "rank": 3,
+      "sqrt_floor": 143,
+      "log_upper": 10
+    },
+    {
+      "rank": 4,
+      "sqrt_floor": 363,
+      "log_upper": 12
+    },
+    {
+      "rank": 5,
+      "sqrt_floor": 871,
+      "log_upper": 14
+    },
+    {
+      "rank": 6,
+      "sqrt_floor": 2019,
+      "log_upper": 16
+    },
+    {
+      "rank": 7,
+      "sqrt_floor": 4321,
+      "log_upper": 17
+    },
+    {
+      "rank": 8,
+      "sqrt_floor": 9693,
+      "log_upper": 19
+    },
+    {
+      "rank": 9,
+      "sqrt_floor": 20443,
+      "log_upper": 20
+    }
+  ],
+  "independently_replayed_positions": 74187,
+  "prime_moduli": 18802,
+  "counts": {
+    "proper_divisor": 46493,
+    "prime_primitive_root": 18802,
+    "Euler_composite": 8892
+  },
+  "largest_prime_witness": 173,
+  "archive_sha256": "db9bc1e2fd81b6f24722ec7b345ff7700d3c982631b4c141bc7e8ec18ee30075",
+  "groups": [
+    {
+      "strip": 0,
+      "rank": 3,
+      "lower": 2792,
+      "upper": 20449,
+      "positions": 4459,
+      "counts": {
+        "proper_divisor": 3512,
+        "prime_primitive_root": 944,
+        "Euler_composite": 3
+      },
+      "largest_root": 47,
+      "largest_prime": 20443,
+      "raw_sha256": "2e5c80b7631760b74a336b5c1942482d3f90023a46c01fd57276205a8bb3648e"
+    },
+    {
+      "strip": 1,
+      "rank": 4,
+      "lower": 2792,
+      "upper": 131769,
+      "positions": 17520,
+      "counts": {
+        "proper_divisor": 12527,
+        "prime_primitive_root": 4146,
+        "Euler_composite": 847
+      },
+      "largest_root": 107,
+      "largest_prime": 131759,
+      "raw_sha256": "fcc893e8bcc6b3cf4b00157c7a13b8aa859a91100348ace18d30f62109fef7cf"
+    },
+    {
+      "strip": 2,
+      "rank": 5,
+      "lower": 2792,
+      "upper": 758641,
+      "positions": 26905,
+      "counts": {
+        "prime_primitive_root": 6835,
+        "proper_divisor": 16965,
+        "Euler_composite": 3105
+      },
+      "largest_root": 149,
+      "largest_prime": 758633,
+      "raw_sha256": "dd112bf0ea35a0a759134a62de36cb0364853931e6230b57499c4b0e91e1151b"
+    },
+    {
+      "strip": 3,
+      "rank": 6,
+      "lower": 2792,
+      "upper": 4076361,
+      "positions": 19435,
+      "counts": {
+        "proper_divisor": 10762,
+        "Euler_composite": 3458,
+        "prime_primitive_root": 5215
+      },
+      "largest_root": 151,
+      "largest_prime": 4076227,
+      "raw_sha256": "b87de56c7aa40a4f77687d5700f19cce329022ff8feb0d7c763b0bee38b47aac"
+    },
+    {
+      "strip": 4,
+      "rank": 7,
+      "lower": 2792,
+      "upper": 18671041,
+      "positions": 5233,
+      "counts": {
+        "proper_divisor": 2479,
+        "Euler_composite": 1292,
+        "prime_primitive_root": 1462
+      },
+      "largest_root": 173,
+      "largest_prime": 18665791,
+      "raw_sha256": "8e8d8433f037a38ed0952ce76410c2632835822b7f5b3d243f2247b1c1d69089"
+    },
+    {
+      "strip": 5,
+      "rank": 8,
+      "lower": 2792,
+      "upper": 93954249,
+      "positions": 625,
+      "counts": {
+        "Euler_composite": 183,
+        "prime_primitive_root": 195,
+        "proper_divisor": 247
+      },
+      "largest_root": 137,
+      "largest_prime": 93880711,
+      "raw_sha256": "fe5d30a7c98b3e91173435e8806ef6c5e0fd6767119f6349e6ca8cb404c42822"
+    },
+    {
+      "strip": 6,
+      "rank": 9,
+      "lower": 2792,
+      "upper": 417916249,
+      "positions": 10,
+      "counts": {
+        "Euler_composite": 4,
+        "prime_primitive_root": 5,
+        "proper_divisor": 1
+      },
+      "largest_root": 11,
+      "largest_prime": 406816411,
+      "raw_sha256": "c3076e98d4634940f0ab239d9c2f12c7361d287134f76da28e02594213472804"
+    }
+  ]
+}
